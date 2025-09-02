@@ -1,0 +1,44 @@
+import 'package:bookia/core/constants/asset_names.dart';
+import 'package:bookia/core/extentions/navigators.dart';
+import 'package:bookia/core/utils/textstyles.dart';
+import 'package:bookia/features/welcome/welcome_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () {
+      pushReplacement(context, const WelcomeScreen());
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(AssetNames.logo),
+              SizedBox(height: 20),
+              Text(
+                'Order Your Book Now!',
+                style: TextStyles.getTitle(fontWeight: FontWeight.w400),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
