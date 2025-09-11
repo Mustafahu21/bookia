@@ -1,8 +1,10 @@
+import 'package:bookia/core/routes/router.dart';
+import 'package:bookia/core/services/api/dio_provider.dart';
 import 'package:bookia/core/utils/theme.dart';
-import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  await DioProvider.init();
   runApp(const MainApp());
 }
 
@@ -11,10 +13,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: Routes.routes,
       debugShowCheckedModeBanner: false,
       theme: Themes.lightTheme,
-      home: const SplashScreen(),
     );
   }
 }

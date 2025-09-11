@@ -6,4 +6,6 @@ class AssetNames {
   static const String google = 'assets/images/Group 123.svg';
   static const String facebook = 'assets/images/facebook_ic.svg';
   static const String apple = 'assets/images/Vector (1).svg';
+  static const String resetpasswordsuccess = 'assets/images/Vector (2).svg';
+  static const String loading = 'assets/images/Loading Dots In Yellow.json';
 }

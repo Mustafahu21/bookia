@@ -1,4 +1,3 @@
-import 'package:bookia/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldInbut extends StatelessWidget {
@@ -9,6 +8,7 @@ class TextFieldInbut extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.obscureText,
+    this.validator,
   });
 
   final String hint;
@@ -16,6 +16,7 @@ class TextFieldInbut extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool? obscureText;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class TextFieldInbut extends StatelessWidget {
       ),
       controller: controller,
       obscureText: obscureText ?? false,
+      validator: validator,
     );
   }
 }

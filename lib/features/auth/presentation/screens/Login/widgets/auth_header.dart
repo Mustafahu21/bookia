@@ -15,7 +15,6 @@ class AuthHeader extends StatelessWidget {
           title,
           style: TextStyles.getTitle(fontSize: 32, fontWeight: FontWeight.w400),
         ),
-        SizedBox(height: 40),
       ],
     );
   }
