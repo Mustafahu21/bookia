@@ -26,5 +26,12 @@ class Themes {
         borderRadius: BorderRadius.circular(10),
       ),
     ),
+
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.whiteColor,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+    ),
   );
 }

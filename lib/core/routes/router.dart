@@ -6,6 +6,7 @@ import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/
 import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/otp_screen.dart';
 import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/success_reset_screen.dart';
 import 'package:bookia/features/home/presentaion/screen/page/home_screen.dart';
+import 'package:bookia/features/main/main_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class Routes {
   static const String newPassword = '/new-password';
   static const String successReset = '/success-reset';
   static const String home = '/home';
+  static const String main = '/main';
 
   static final routes = GoRouter(
     routes: [
@@ -66,6 +68,7 @@ class Routes {
         builder: (context, state) => SuccessResetScreen(),
       ),
       GoRoute(path: home, builder: (context, state) => HomeScreen()),
+      GoRoute(path: main, builder: (context, state) => MainAppScreen()),
     ],
   );
 }

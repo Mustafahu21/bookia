@@ -1,7 +1,7 @@
 import 'data.dart';
 
 class AuthResponse {
-  Data? data;
+  UserData? data;
   String? message;
   List<dynamic>? error;
   int? status;
@@ -11,7 +11,7 @@ class AuthResponse {
   factory AuthResponse.fromJson(Map<String, dynamic> json) => AuthResponse(
     data: json['data'] == null
         ? null
-        : Data.fromJson(json['data'] as Map<String, dynamic>),
+        : UserData.fromJson(json['data'] as Map<String, dynamic>),
     message: json['message'] as String?,
     error: json['error'] as List<dynamic>?,
     status: json['status'] as int?,

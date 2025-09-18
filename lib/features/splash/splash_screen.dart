@@ -1,6 +1,7 @@
 import 'package:bookia/core/constants/asset_names.dart';
 import 'package:bookia/core/routes/navigators.dart';
 import 'package:bookia/core/routes/router.dart';
+import 'package:bookia/core/services/local/local_helper.dart';
 import 'package:bookia/core/utils/textstyles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      pushReplacement(context, Routes.welcome);
+      LocalHelper.getUserData().then((value) {
+        if (value != null) {
+          pushReplacement(context, Routes.main);
+        } else {
+          pushReplacement(context, Routes.welcome);
+        }
+      });
     });
     super.initState();
   }

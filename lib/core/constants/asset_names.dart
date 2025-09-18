@@ -8,4 +8,8 @@ class AssetNames {
   static const String apple = 'assets/images/Vector (1).svg';
   static const String resetpasswordsuccess = 'assets/images/Vector (2).svg';
   static const String loading = 'assets/images/Loading Dots In Yellow.json';
+  static const String home = 'assets/images/Home.svg';
+  static const String wishlist = 'assets/images/Bookmark.svg';
+  static const String cart = 'assets/images/Vector (3).svg';
+  static const String profile = 'assets/images/Combined-Shape.svg';
 }
