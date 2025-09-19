@@ -2,6 +2,7 @@ import 'package:bookia/components/app_bar_arrow.dart';
 import 'package:bookia/components/inbut_field.dart';
 import 'package:bookia/components/main_button.dart';
 import 'package:bookia/components/nav_bar_text.dart';
+import 'package:bookia/components/social_media_icon.dart';
 import 'package:bookia/core/constants/asset_names.dart';
 import 'package:bookia/core/extentions/dialoges.dart';
 import 'package:bookia/core/routes/navigators.dart';
@@ -10,19 +11,19 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/textstyles.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/screens/Login/widgets/auth_header.dart';
+import 'package:bookia/features/auth/presentation/widgets/auth_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool obscureText = true;
 
   @override
@@ -45,60 +46,94 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.all(25.0),
             child: Column(
               children: [
-                AuthHeader(title: 'Hello! Register to get started'),
+                AuthHeader(title: 'Welcome back! Glad to see you, Again!'),
                 SizedBox(height: 40),
                 formFields(),
-                SizedBox(height: 40),
-                MainButton(
-                  text: 'Register',
-                  onPressed: () {
-                    if (context
-                        .read<AuthCubit>()
-                        .key
-                        .currentState!
-                        .validate()) {
-                      context.read<AuthCubit>().register();
-                    }
-                  },
-                  backgroundColor: AppColors.primaryColor,
-                  textStyle: TextStyles.getBody(color: AppColors.whiteColor),
+                forgotPassword(context),
+                Column(
+                  children: [
+                    SizedBox(height: 25),
+                    MainButton(
+                      text: 'Login',
+                      onPressed: () {
+                        if (context
+                            .read<AuthCubit>()
+                            .key
+                            .currentState!
+                            .validate()) {
+                          context.read<AuthCubit>().login();
+                        }
+                      },
+                      backgroundColor: AppColors.primaryColor,
+                      textStyle: TextStyles.getBody(
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                  ],
                 ),
+                divider(),
+                SizedBox(height: 30),
+                socialMedia(),
               ],
             ),
           ),
         ),
       ),
       bottomNavigationBar: NavBarText(
-        title1: 'Already have an account? ',
-        title2: 'Login Now',
-        onTap: () => pushReplacement(context, Routes.login),
+        title1: 'Don\'t have an account? ',
+        title2: 'Register Now',
+        onTap: () => pushReplacement(context, Routes.register),
       ),
     );
   }
 
-  SafeArea navBarText(BuildContext context) {
-    return SafeArea(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Already have an account? ",
+  Row forgotPassword(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        TextButton(
+          onPressed: () {
+            pushTo(context, Routes.forgotPassword);
+          },
+          child: Text(
+            'Forgot Password?',
             style: TextStyles.getBody(color: AppColors.darkGrey),
           ),
-          GestureDetector(
-            onTap: () {
-              pushReplacement(context, Routes.login);
-            },
-            child: Text(
-              'Login Now',
-              style: TextStyles.getBody(
-                color: AppColors.primaryColor,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+
+  Row socialMedia() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(child: SocialMediaIcon(iconPath: AssetNames.google)),
+        SizedBox(width: 10),
+        Expanded(child: SocialMediaIcon(iconPath: AssetNames.facebook)),
+        SizedBox(width: 10),
+        Expanded(child: SocialMediaIcon(iconPath: AssetNames.apple)),
+      ],
+    );
+  }
+
+  Row divider() {
+    return Row(
+      children: [
+        Expanded(
+          child: Divider(color: AppColors.lightGrayColor, thickness: 0.7),
+        ),
+        SizedBox(width: 15),
+        Text(
+          'Or Login With',
+          style: TextStyles.getBody(color: AppColors.darkGrey),
+        ),
+        SizedBox(width: 15),
+        Expanded(
+          child: Divider(color: AppColors.lightGrayColor, thickness: 0.7),
+        ),
+      ],
     );
   }
 
@@ -109,21 +144,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Column(
         children: [
           TextFieldInbut(
-            hint: 'Username',
-            controller: cubit.usernameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your username';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 20),
-          TextFieldInbut(
-            hint: 'Email',
+            hint: 'Enter Your Email',
             controller: cubit.emailController,
             validator: (value) {
-              if (value!.isEmpty) {
+              if (value == null || value.isEmpty) {
                 return 'Please enter your email';
               }
               return null;
@@ -131,11 +155,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           SizedBox(height: 20),
           TextFieldInbut(
-            hint: 'Password',
+            hint: 'Enter Your Password',
             controller: cubit.passwordController,
             obscureText: obscureText,
             validator: (value) {
-              if (value!.isEmpty) {
+              if (value == null || value.isEmpty) {
                 return 'Please enter your password';
               }
               return null;
@@ -160,21 +184,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20),
-          TextFieldInbut(
-            hint: 'Confirm Password',
-            controller: cubit.confirmPasswordController,
-            obscureText: obscureText,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please confirm your password';
-              }
-              if (value != cubit.passwordController.text) {
-                return 'Passwords do not match';
-              }
-              return null;
-            },
           ),
         ],
       ),

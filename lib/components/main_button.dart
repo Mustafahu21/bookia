@@ -11,6 +11,7 @@ class MainButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.textStyle,
+    this.radius,
   });
 
   final Color? backgroundColor;
@@ -19,6 +20,7 @@ class MainButton extends StatelessWidget {
   final String text;
   final Function() onPressed;
   final TextStyle? textStyle;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,9 @@ class MainButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         minimumSize: Size(width ?? double.infinity, height ?? 65),
         backgroundColor: backgroundColor ?? AppColors.whiteColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radius ?? 10),
+        ),
       ),
       onPressed: onPressed,
       child: Text(text, style: textStyle ?? TextStyles.getBody()),

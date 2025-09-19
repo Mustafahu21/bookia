@@ -7,8 +7,8 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/textstyles.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia/features/auth/presentation/cubit/auth_state.dart';
-import 'package:bookia/features/auth/presentation/screens/Login/widgets/auth_header.dart';
-import 'package:bookia/features/auth/presentation/screens/forgot_password/widgets/pinput.dart';
+import 'package:bookia/features/auth/presentation/widgets/auth_header.dart';
+import 'package:bookia/features/auth/presentation/widgets/pinput.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

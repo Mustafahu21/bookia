@@ -6,4 +6,7 @@ class Endpoints {
   static const String checkForgotPassword = '/check-forget-password';
   static const String changePassword = '/reset-password';
   static const String resendCode = '/resend-verify-code';
+  static const String bestSellers = '/products-bestseller';
+  static const String allProducts = '/products';
+  static const String sliders = '/sliders';
 }

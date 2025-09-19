@@ -26,3 +26,12 @@ showLoadingDialog(BuildContext context) {
     ),
   );
 }
+
+Widget getLoadingWidget() {
+  return Center(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Lottie.asset(AssetNames.loading, height: 200, width: 200)],
+    ),
+  );
+}

@@ -12,4 +12,5 @@ class AssetNames {
   static const String wishlist = 'assets/images/Bookmark.svg';
   static const String cart = 'assets/images/Vector (3).svg';
   static const String profile = 'assets/images/Combined-Shape.svg';
+  static const String searchIcon = 'assets/images/search-normal.svg';
 }

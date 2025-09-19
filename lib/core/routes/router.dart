@@ -1,11 +1,13 @@
 import 'package:bookia/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:bookia/features/auth/presentation/screens/Login/page/login_screen.dart';
-import 'package:bookia/features/auth/presentation/screens/Register/register_screen.dart';
-import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/forgot_password_screen.dart';
-import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/new_password_screen.dart';
-import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/otp_screen.dart';
-import 'package:bookia/features/auth/presentation/screens/forgot_password/pages/success_reset_screen.dart';
-import 'package:bookia/features/home/presentaion/screen/page/home_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/login_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/register_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/forgot_password_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/new_password_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/otp_screen.dart';
+import 'package:bookia/features/auth/presentation/pages/success_reset_screen.dart';
+import 'package:bookia/features/home/presentaion/cubit/home_cubit.dart';
+import 'package:bookia/features/home/presentaion/page/all_products_screen.dart';
+import 'package:bookia/features/home/presentaion/page/home_screen.dart';
 import 'package:bookia/features/main/main_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
@@ -23,6 +25,7 @@ class Routes {
   static const String successReset = '/success-reset';
   static const String home = '/home';
   static const String main = '/main';
+  static const String allProducts = '/all-products';
 
   static final routes = GoRouter(
     routes: [
@@ -68,7 +71,22 @@ class Routes {
         builder: (context, state) => SuccessResetScreen(),
       ),
       GoRoute(path: home, builder: (context, state) => HomeScreen()),
-      GoRoute(path: main, builder: (context, state) => MainAppScreen()),
+      GoRoute(
+        path: main,
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeCubit()
+            ..bestSellers()
+            ..sliderPics(),
+          child: MainAppScreen(),
+        ),
+      ),
+      GoRoute(
+        path: allProducts,
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeCubit()..allProducts(),
+          child: AllProductsScreen(),
+        ),
+      ),
     ],
   );
 }

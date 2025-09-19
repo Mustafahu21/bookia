@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 class Themes {
   static ThemeData lightTheme = ThemeData(
+    appBarTheme: AppBarTheme(
+      scrolledUnderElevation: 0,
+      backgroundColor: Colors.transparent,
+    ),
     fontFamily: 'bookia',
     scaffoldBackgroundColor: AppColors.whiteColor,
     inputDecorationTheme: InputDecorationTheme(
