@@ -81,7 +81,7 @@ class AuthCubit extends Cubit<AuthState> {
       newPassword: passwordController.text,
       newPasswordConfirmation: confirmPasswordController.text,
     );
-    print('Reset Password Params: ${params.toJson()}');
+    // print('Reset Password Params: ${params.toJson()}');
 
     var response = await AuthRepo.resetPassword(params);
     if (response != null) {

@@ -17,13 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      LocalHelper.getUserData().then((value) {
-        if (value != null) {
-          pushReplacement(context, Routes.main);
-        } else {
-          pushReplacement(context, Routes.welcome);
-        }
-      });
+      var value = LocalHelper.getUserData();
+      if (value != null) {
+        pushReplacement(context, Routes.main);
+      } else {
+        pushReplacement(context, Routes.welcome);
+      }
     });
     super.initState();
   }

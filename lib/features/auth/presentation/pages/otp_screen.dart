@@ -33,7 +33,7 @@ class OtpScreen extends StatelessWidget {
             );
           } else if (state is AuthFailure) {
             pop(context);
-            showErrorDialog(context, state.error);
+            showMyDialog(context, state.error, DialogType.error);
           } else {
             showLoadingDialog(context);
           }

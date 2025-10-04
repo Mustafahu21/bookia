@@ -35,7 +35,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             pushTo(context, Routes.successReset);
           } else if (state is AuthFailure) {
             pop(context);
-            showErrorDialog(context, state.error);
+            showMyDialog(context, state.error, DialogType.error);
           } else {
             showLoadingDialog(context);
           }

@@ -1,14 +1,19 @@
 import 'package:bookia/core/constants/asset_names.dart';
+import 'package:bookia/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-showErrorDialog(BuildContext context, String message) {
+enum DialogType { success, error }
+
+showMyDialog(BuildContext context, String message, DialogType type) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.all(20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      backgroundColor: Colors.red,
+      backgroundColor: type == DialogType.error
+          ? Colors.red
+          : AppColors.primaryColor,
       content: Text(message),
     ),
   );

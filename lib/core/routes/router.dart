@@ -5,8 +5,10 @@ import 'package:bookia/features/auth/presentation/pages/forgot_password_screen.d
 import 'package:bookia/features/auth/presentation/pages/new_password_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/otp_screen.dart';
 import 'package:bookia/features/auth/presentation/pages/success_reset_screen.dart';
+import 'package:bookia/features/home/data/models/product_list_response/product.dart';
 import 'package:bookia/features/home/presentaion/cubit/home_cubit.dart';
 import 'package:bookia/features/home/presentaion/page/all_products_screen.dart';
+import 'package:bookia/features/home/presentaion/page/book_details.dart';
 import 'package:bookia/features/home/presentaion/page/home_screen.dart';
 import 'package:bookia/features/main/main_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
@@ -26,6 +28,7 @@ class Routes {
   static const String home = '/home';
   static const String main = '/main';
   static const String allProducts = '/all-products';
+  static const String bookDetails = '/book-details';
 
   static final routes = GoRouter(
     routes: [
@@ -85,6 +88,13 @@ class Routes {
         builder: (context, state) => BlocProvider(
           create: (context) => HomeCubit()..allProducts(),
           child: AllProductsScreen(),
+        ),
+      ),
+      GoRoute(
+        path: bookDetails,
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeCubit(),
+          child: BookDetailsPage(product: state.extra as Product),
         ),
       ),
     ],

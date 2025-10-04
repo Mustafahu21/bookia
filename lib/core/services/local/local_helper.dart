@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bookia/features/auth/data/model/response/auth_response/data.dart';
+import 'package:bookia/features/wishlist/data/model/wishlist_response/datum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalHelper {
@@ -18,11 +19,29 @@ class LocalHelper {
     setData(kUserData, userDataString);
   }
 
-  static Future<UserData?> getUserData() async {
+  static UserData? getUserData() {
     var userDataString = pref.getString(kUserData);
     if (userDataString == null) return null;
     var objectJson = json.decode(userDataString);
     return UserData.fromJson(objectJson);
+  }
+
+  static setWishlistbool(bool isWishlist) {
+    setData('isWishlist', isWishlist);
+  }
+
+  static List<Datum>? getWishlist() {
+    var source = pref.getStringList("wishlist");
+    if (source == null) return null;
+    var listOfObj = source.map((e) => Datum.fromJson(jsonDecode(e))).toList();
+    return listOfObj;
+  }
+
+  static setWishlist(List<Datum>? books) async {
+    if (books == null) return;
+
+    var listOfString = books.map((e) => jsonEncode(e.toJson())).toList();
+    await pref.setStringList("wishlist", listOfString);
   }
 
   static setData(String key, dynamic value) async {
@@ -42,52 +61,4 @@ class LocalHelper {
   static getData(String key) {
     return pref.get(key);
   }
-
-  // static String? getString(String key) {
-  //   return pref.getString(key);
-  // }
-
-  // static Future<bool> setString(String key, String value) {
-  //   return pref.setString(key, value);
-  // }
-
-  // static Future<bool> remove(String key) {
-  //   return pref.remove(key);
-  // }
-
-  // static Future<bool> clear() {
-  //   return pref.clear();
-  // }
-
-  // static Future<bool> setInt(String key, int value) {
-  //   return pref.setInt(key, value);
-  // }
-
-  // static int? getInt(String key) {
-  //   return pref.getInt(key);
-  // }
-
-  // static Future<bool> setDouble(String key, double value) {
-  //   return pref.setDouble(key, value);
-  // }
-
-  // static double? getDouble(String key) {
-  //   return pref.getDouble(key);
-  // }
-
-  // static bool? getBool(String key) {
-  //   return pref.getBool(key);
-  // }
-
-  // static Future<bool> setBool(String key, bool value) {
-  //   return pref.setBool(key, value);
-  // }
-
-  // static Future<bool> setStringList(String key, List<String> value) {
-  //   return pref.setStringList(key, value);
-  // }
-
-  // static List<String>? getStringList(String key) {
-  //   return pref.getStringList(key);
-  // }
 }

@@ -13,4 +13,6 @@ class AssetNames {
   static const String cart = 'assets/images/Vector (3).svg';
   static const String profile = 'assets/images/Combined-Shape.svg';
   static const String searchIcon = 'assets/images/search-normal.svg';
+  static const String textbook = 'assets/images/Rectangle 22.png';
+  static const String cancel = 'assets/images/Shape (1).svg';
 }

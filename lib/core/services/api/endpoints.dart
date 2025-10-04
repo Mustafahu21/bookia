@@ -9,4 +9,7 @@ class Endpoints {
   static const String bestSellers = '/products-bestseller';
   static const String allProducts = '/products';
   static const String sliders = '/sliders';
+  static const String add2wishlist = '/add-to-wishlist';
+  static const String wishlist = '/wishlist';
+  static const String removeFromWishlist = '/remove-from-wishlist';
 }

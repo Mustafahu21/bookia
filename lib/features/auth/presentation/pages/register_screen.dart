@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             pushRemoveUntil(context, Routes.home);
           } else if (state is AuthFailure) {
             pop(context);
-            showErrorDialog(context, state.error);
+            showMyDialog(context, state.error, DialogType.error);
           } else {
             showLoadingDialog(context);
           }
