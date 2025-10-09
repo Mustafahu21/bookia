@@ -1,3 +1,4 @@
+import 'package:bookia/features/cart/data/repo/cart_repo.dart';
 import 'package:bookia/features/wishlist/data/repo/wishlist_repo.dart';
 import 'package:bookia/features/wishlist/presentation/cubit/wishlist_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,5 +33,15 @@ class WishlistCubit extends Cubit<WishlistState> {
         emit(WishlistLoaded());
       }
     });
+  }
+
+  addToCart(int productId) async {
+    emit(WishlistLoading());
+    var data = await CartRepo.addToCart(productId: productId);
+    if (data != null) {
+      emit(WishlistCartSuccessState('Added to wishlist'));
+    } else {
+      emit(WishlistCartErrorState("Something went wrong"));
+    }
   }
 }

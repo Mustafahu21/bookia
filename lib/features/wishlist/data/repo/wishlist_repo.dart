@@ -20,7 +20,7 @@ class WishlistRepo {
 
       if (res.statusCode == 200) {
         var data = WishlistResponse.fromJson(res.data);
-        LocalHelper.setWishlist(data.data?.data);
+        LocalHelper.setWishlistNcart(data.data?.data);
         return data;
       } else {
         return null;
@@ -45,7 +45,7 @@ class WishlistRepo {
 
       if (res.statusCode == 200) {
         var data = WishlistResponse.fromJson(res.data);
-        LocalHelper.setWishlist(data.data?.data);
+        LocalHelper.setWishlistNcart(data.data?.data);
         return data;
       } else {
         return null;

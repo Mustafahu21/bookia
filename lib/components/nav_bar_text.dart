@@ -1,5 +1,3 @@
-import 'package:bookia/core/routes/navigators.dart';
-import 'package:bookia/core/routes/router.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/textstyles.dart';
 import 'package:flutter/material.dart';

@@ -12,4 +12,8 @@ class Endpoints {
   static const String add2wishlist = '/add-to-wishlist';
   static const String wishlist = '/wishlist';
   static const String removeFromWishlist = '/remove-from-wishlist';
+  static const String showCart = '/cart';
+  static const String addToCart = '/add-to-cart';
+  static const String removeFromCart = '/remove-from-cart';
+  static const String updateCart = '/update-cart';
 }

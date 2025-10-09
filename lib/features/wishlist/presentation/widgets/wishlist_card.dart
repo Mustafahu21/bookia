@@ -11,10 +11,12 @@ class WishlistCard extends StatelessWidget {
     super.key,
     required this.products,
     required this.onDelete,
+    required this.add2Cart,
   });
 
   final Datum products;
   final Function() onDelete;
+  final Function() add2Cart;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +93,9 @@ class WishlistCard extends StatelessWidget {
                       children: [
                         MainButton(
                           text: 'Add to Cart',
-                          onPressed: () {},
+                          onPressed: () {
+                            add2Cart();
+                          },
                           height: 50,
                           width: 200,
                           backgroundColor: AppColors.primaryColor,

@@ -105,7 +105,9 @@ class _BookDetailsPageState extends State<BookDetailsPage> {
             ),
             MainButton(
               text: 'Add to cart',
-              onPressed: () {},
+              onPressed: () {
+                context.read<HomeCubit>().addToCart(widget.product.id ?? 0);
+              },
               height: 60,
               width: 250,
               backgroundColor: AppColors.darkColor,

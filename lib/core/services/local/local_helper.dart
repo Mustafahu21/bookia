@@ -26,18 +26,14 @@ class LocalHelper {
     return UserData.fromJson(objectJson);
   }
 
-  static setWishlistbool(bool isWishlist) {
-    setData('isWishlist', isWishlist);
-  }
-
-  static List<Datum>? getWishlist() {
+  static List<dynamic>? getWishlistNcart() {
     var source = pref.getStringList("wishlist");
     if (source == null) return null;
     var listOfObj = source.map((e) => Datum.fromJson(jsonDecode(e))).toList();
     return listOfObj;
   }
 
-  static setWishlist(List<Datum>? books) async {
+  static setWishlistNcart(List<dynamic>? books) async {
     if (books == null) return;
 
     var listOfString = books.map((e) => jsonEncode(e.toJson())).toList();
