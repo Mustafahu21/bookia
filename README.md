@@ -78,33 +78,6 @@ Each feature follows the **data → presentation** layering:
 
 ---
 
-## 🔌 API
-
-The app communicates with a REST backend at `https://codingarabic.online/api`.
-
-**Endpoints used:**
-
-| Endpoint | Purpose |
-|----------|---------|
-| `/login` | User login |
-| `/register` | User registration |
-| `/forget-password` | Request password reset code |
-| `/check-forget-password` | Verify OTP code |
-| `/reset-password` | Set new password |
-| `/resend-verify-code` | Resend verification code |
-| `/products-bestseller` | Get best-seller books |
-| `/products` | Get all products |
-| `/sliders` | Home page slider images |
-| `/add-to-wishlist` | Add a book to wishlist |
-| `/wishlist` | Get wishlist |
-| `/remove-from-wishlist` | Remove from wishlist |
-| `/cart` | View cart |
-| `/add-to-cart` | Add item to cart |
-| `/remove-from-cart` | Remove item from cart |
-| `/update-cart` | Update cart item quantity |
-
----
-
 ## 🚀 Getting Started
 
 ```bash
